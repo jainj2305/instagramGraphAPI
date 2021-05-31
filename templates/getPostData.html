@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Instagram Graph API</title>
+    </head>
+    <body>
+        <h1>Instagram Graph API</h1>
+        <br/>
+        <h2>Enter Post Details</h2>
+        <br/>
+
+        <form method="POST" id="form" action="{{ url_for('postPhotos') }}">
+            <label>Image URL : </label><br>
+            <input type="url" id="post_url" name="post_url"><br><br>
+            <label>Space sepreted usernames to tag them : </label><br>
+            <input type="text" id="user_tags" name="user_tags"><br><br>
+            <label>Location : </label><br>
+            <input type="text" id="location" name="location"><br>
+            * By default location is set to 'Solomon R. Guggenheim Museum' location search API does not works properly on Facebook<br>
+            If it returns id of location then location will be changed form default value.<br><br>
+            <label>Caption : </label><br>
+            <textarea rows = "8" cols = "80" name = "caption" id="caption"></textarea><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>

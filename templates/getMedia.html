@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Instagram Graph API</title>
+    </head>
+    <body>
+        <h1>Instagram Graph API</h1>
+        <br/>
+        <h2>User Media</h2>
+        <br/>
+        {% for i in range(length) %}
+            <br/>
+            ------------------------------- Media {{ i+1 }} -------------------------------
+            <br/>
+            {% for key,value in response[i].items() %}
+                {% if key!='children' and key!='comments' %}
+                    {{ key }} : {{ value }}
+                {% endif %}
+                {% if key=='comments' %}
+                <br/>
+                    {% for comment in value['data'] %}
+                        {% for k,v in comment.items() %}
+                            {{ k }} : {{ v }}
+                            <br/>
+                        {% endfor %}
+                        <br/>
+                    {% endfor %}
+                {% endif %}
+                <br/>
+            {% endfor %}
+            {% if response[i]['media_type']=='IMAGE' %}
+                <br/>
+                <img src="{{ response[i]['media_url'] }}" style="height: 500px; width: auto;" />
+            {% elif response[i]['media_type']=='CAROUSEL_ALBUM' %}
+                {% for media in response[i]['children']['data'] %}
+                    {% if media['media_type']=='IMAGE' %}
+                        <br/>
+                        <img src="{{ media['media_url'] }}" style="height: 500px; width: auto;" />
+                        <br>
+                    {% else %}
+                        <br/>
+                        <img src="{{ media['thumbnail_url'] }}" style="height: 500px; width: auto;" />
+                        <br>
+                    {% endif %}
+                {% endfor %}
+            {% elif response[i]['media_type']=='VIDEO' %}
+                <br/>
+                <img src="{{ response[i]['thumbnail_url'] }}" style="height: 500px; width: auto;" />
+            {% endif %}
+            <br/>
+        {% endfor %}
+    </body>
+</html>

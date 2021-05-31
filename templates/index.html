@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Instagram Graph API</title>
+    </head>
+    <body>
+        <h1>Instagram Graph API</h1>
+        <br/>
+        <h2>Home Page</h2>
+        <br/>
+        1. Setup your app for Instagram Graph API.<br/>
+        Open documentation of Instagram Graph API and follow the instructions to setup.<br>
+        Click <a href="https://developers.facebook.com/docs/instagram-api/getting-started" target="_blank" >here</a> 
+        to open Getting Started documentation.
+        <br/>
+        The API should return a User access token.
+        <br/>Capture the below credentials so your app can use it in the next few queries.
+        <br/>a) Get client id (App id) from facebook app
+        <br/>b) Get client secret from facebook app
+        <br/>c) Get User Access Token from Graph API tool.
+        <br/>
+        <br/>2. Get the credentials from step 1 and paste it in defines.py file and run the app again.<br/>
+        <br/>3. By default, Instagram User Access Tokens are short-lived and are valid for one hour. However, short-lived tokens can be exchanged for long-lived tokens.
+        <br/>Click <a href="{{ url_for('longLiveToken')}}">here</a> to get Long Live Access Token.<br/>
+        The API should return a Long Live User access token. Capture the token so your app can replace it with the access token fetched in step 1.<br/>
+        <br/>4. Get User's Pages
+        <br/>Click <a href="{{ url_for('getPages')}}">here</a> to get User's Pages.<br/>
+        Capture the page id of user's page which is connected to Instagram Business Account and paste it in defines.py file.<br/>
+        <br/>5. Get the Page's Instagram Business Account
+        <br/>Click <a href="{{ url_for('getAccount')}}">here</a> to get Page's Instagram Business Account.
+        <br/>This should return the IG User — an Instagram Business or Creator Account — that's connected to the Facebook Page.
+        <br/>Capture the id of Instagram Business or Creator Account and paste it in defines.py file.<br/>
+        <br/>6. Get the Instagram Business Account's Media Objects
+        <br/>Click <a href="{{ url_for('getMedia')}}">here</a> to get the Instagram Business Account's Media.
+        <br/>This should return id, caption, media_type, media_url, permalink, 
+        thumbnail_url, timestamp, username, comments_count, like_count, 
+        children{media_url, media_type, thumbnail_url}, comments{username, timestamp, text, id}<br/>
+        <br/>7. Getting an Business Account's Follower & Media Count
+        <br/>Click <a href="{{ url_for('getUsername')}}">here</a> to get Business Account's Follower & Media Count.<br/>
+        <br/>8. Content Publishing
+        <br/>Click <a href="{{ url_for('getPostData')}}">here</a> to Post an Image.<br/>
+        <br/>9. Get media insight
+        <br/>Click <a href="{{ url_for('getMediaId')}}">here</a> to get media insights.<br/>
+        <br/>10. Get user insight
+        <br/>Click <a href="{{ url_for('userInsights')}}">here</a> to get user insights.<br/>
+    </body>
+</html>

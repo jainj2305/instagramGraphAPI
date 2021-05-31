@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Instagram Graph API</title>
+    </head>
+    <body>
+        <h1>Instagram Graph API</h1>
+        <br/>
+        <h2>User Pages</h2>
+        <br/>
+        {% for i in range(length) %}
+            ------------------ Page {{ i+1 }} ------------------
+            <br/>
+            {% for key,value in response[i].items() %}
+                {{ key }} : {{ value }}
+                <br/>
+            {% endfor %}
+            <br/>
+        {% endfor %}   
+    </body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Instagram Graph API</title>
+    </head>
+    <body>
+        <h1>Instagram Graph API</h1>
+        <br/>
+        <h2>Enter username of a Business Account</h2>
+        <br/>
+
+        <form method="POST" id="form" action="{{ url_for('business_discovery') }}">
+            <label for="fname">User Name:</label>
+            <input type="text" id="username" name="username"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>

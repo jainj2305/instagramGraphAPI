@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Instagram Graph API</title>
+    </head>
+    <body>
+        <h1>Instagram Graph API</h1>
+        <br/>
+        <h2>Business Discovery</h2>
+        <br/>
+        ------------------------------- Business Discovery -------------------------------
+        <br/>
+        {% for key,value in response['business_discovery']['business_discovery'].items() %}
+            {% if key!='media' %}
+                {{ key }} : {{ value }}
+            {% endif %}
+            <br/>
+        {% endfor %}
+        <br/>
+        Profile Picture
+        <br/>
+        <img src="{{ response['business_discovery']['business_discovery']['profile_picture_url'] }}" style="height: 500px; width: auto;" />
+        <br/>
+        <br/>
+        <br/>
+        {% for i in range(length) %}
+            <br/>
+            ------------------------------- Media {{ i+1 }} -------------------------------
+            <br/>
+            {% for key,value in response['business_discovery']['business_discovery']['media']['data'][i].items() %}
+                {% if key!='children' %}
+                    {{ key }} : {{ value }}
+                    <br/>
+                {% endif %}
+            {% endfor %}
+            {% if response['business_discovery']['business_discovery']['media']['data'][i]['media_type']=='IMAGE' %}
+                <br/>
+                <img src="{{ response['business_discovery']['business_discovery']['media']['data'][i]['media_url'] }}" style="height: 500px; width: auto;" />
+            {% elif response['business_discovery']['business_discovery']['media']['data'][i]['media_type']=='CAROUSEL_ALBUM' %}
+                <br/>
+                <img src="{{ response['business_discovery']['business_discovery']['media']['data'][i]['media_url'] }}" style="height: 500px; width: auto;" />
+                {% for media in response['business_discovery']['business_discovery']['media']['data'][i]['children']['data'] %}
+                    <br/>
+                    <img src="{{ media['media_url'] }}" style="height: 500px; width: auto;" />
+                    <br>
+                {% endfor %}
+            {% elif response['business_discovery']['business_discovery']['media']['data'][i]['media_type']=='VIDEO' %}
+                <br/>
+                <img src="{{ response['business_discovery']['business_discovery']['media']['data'][i]['media_url'] }}" style="height: 500px; width: auto;" />
+                <br/>
+                <img src="{{ response['business_discovery']['business_discovery']['media']['data'][i]['thumbnail_url'] }}" style="height: 500px; width: auto;" />
+            {% endif %}
+            <br/>
+        {% endfor %}
+    </body>
+</html>

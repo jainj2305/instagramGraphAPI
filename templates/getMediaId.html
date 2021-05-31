@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Instagram Graph API</title>
+    </head>
+    <body>
+        <h1>Instagram Graph API</h1>
+        <br/>
+        <h2>Enter media ID</h2>
+        <br/>
+
+        <form method="POST" id="form" action="{{ url_for('mediaInsights') }}">
+            <label>Media ID : </label>
+            <input type="text" id="media_id" name="media_id"><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>
