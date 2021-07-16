@@ -165,3 +165,6 @@ def userInsights():
     response = getUserInsights(params)
     data=json.loads(response.content)
     return render_template("getUserInsights.html", response=data)
+
+if __name__ == '__main__':
+      app.run(host='0.0.0.0', port=80)
